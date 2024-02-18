@@ -11,6 +11,7 @@ import { DashboardDealsChartQuery } from "@/graphql/types";
 
 const DealsChart = () => {
   const { data } = useList<GetFieldsFromList<DashboardDealsChartQuery>>({
+    //hook by refine that allows you to fetch data from API
     resource: "dealStages",
     filters: [
       {
@@ -20,15 +21,16 @@ const DealsChart = () => {
       },
     ],
     meta: {
+      // need to point to graphql query that returns all events
       gqlQuery: DASHBOARD_DEALS_CHART_QUERY,
     },
-  });
-
+  }); // Define which list to use and what data to return
   const dealData = React.useMemo(() => {
     return mapDealsData(data?.data);
   }, [data?.data]);
 
   const config: AreaConfig = {
+    // get data property
     data: dealData,
     xField: "timeText",
     yField: "value",
@@ -57,7 +59,6 @@ const DealsChart = () => {
       },
     },
   };
-
   return (
     <Card
       style={{ height: "100%" }}
@@ -67,7 +68,7 @@ const DealsChart = () => {
             display: "flex",
             alignItems: "center",
             gap: "8px",
-            padding: "8px 16px",
+            padding: "8px 16px", // Apply padding directly to the title content
           }}
         >
           <DollarOutlined />
