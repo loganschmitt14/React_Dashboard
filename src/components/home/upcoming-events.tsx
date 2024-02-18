@@ -1,7 +1,6 @@
 import { CalendarOutlined } from "@ant-design/icons";
 import { Badge, Card, List } from "antd";
 import { Text } from "../text";
-import { useState } from "react";
 import UpcomingEventsSkeleton from "../skeleton/upcoming-events";
 import { getDate } from "@/utilities/helpers";
 import { useList } from "@refinedev/core";
